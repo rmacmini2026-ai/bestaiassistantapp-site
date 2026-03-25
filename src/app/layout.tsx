@@ -26,11 +26,23 @@ export const metadata: Metadata = {
   },
 };
 
+const GA_ID = "G-YX5K6HX57V";
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Script src="https://subscribe-forms.beehiiv.com/embed.js" strategy="afterInteractive" />
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         {children}
       </body>
     </html>
