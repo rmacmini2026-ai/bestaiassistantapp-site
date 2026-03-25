@@ -57,7 +57,7 @@ export async function getLatestYouTubeVideos(): Promise<VideoCard[]> {
   try {
     const { Innertube } = await import('youtubei.js');
     const youtube = await Innertube.create();
-    const channel = await youtube.getChannel('UCX6b17PVsYBQ0ip5gyeme-Q');
+    const channel = await youtube.getChannel('UC2ojq-nuP8ceeHqiroeKhBA');
     const videosTab = await channel.getVideos();
     const latest = videosTab.videos.slice(0, 4);
 
