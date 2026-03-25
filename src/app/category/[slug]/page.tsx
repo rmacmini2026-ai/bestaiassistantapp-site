@@ -7,16 +7,19 @@ import {
   type CategorySlug,
 } from "@/lib/content";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Object.keys(categoryMeta).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const meta = categoryMeta[params.slug as CategorySlug];
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const meta = categoryMeta[slug as CategorySlug];
 
   if (!meta) {
     return {
@@ -30,15 +33,20 @@ export function generateMetadata({
   };
 }
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug as CategorySlug;
-  const meta = categoryMeta[slug];
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const typedSlug = slug as CategorySlug;
+  const meta = categoryMeta[typedSlug];
 
   if (!meta) {
     notFound();
   }
 
-  const categoryArticles = getArticlesByCategory(slug);
+  const categoryArticles = getArticlesByCategory(typedSlug);
 
   return (
     <main className="min-h-screen bg-[#f5f2ea] px-6 py-10 text-zinc-950 md:px-10 lg:px-16">

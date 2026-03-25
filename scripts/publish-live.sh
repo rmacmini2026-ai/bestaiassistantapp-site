@@ -21,9 +21,11 @@ rsync -av --delete \
   --exclude '.next' \
   --exclude 'out' \
   --exclude '.vercel' \
-  "$SITE_DIR/" "$DEPLOY_REPO_DIR/"
+  "$SITE_DIR/" "$DEPLOY_REPO_DIR/" >/tmp/bestaiassistantapp-rsync.log
 
 cd "$DEPLOY_REPO_DIR"
+
+git pull --rebase origin main
 
 if [ -n "$(git status --porcelain)" ]; then
   git add .
