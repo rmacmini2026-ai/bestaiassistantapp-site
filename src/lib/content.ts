@@ -21,6 +21,8 @@ export type Article = {
   readTime: string;
   author: string;
   featured?: boolean;
+  heroImage?: string;
+  sourceUrl?: string;
   body: string[];
 };
 
@@ -67,6 +69,8 @@ function parseArticle(filePath: string): Article {
     readTime: data.readTime,
     author: data.author,
     featured: Boolean(data.featured),
+    heroImage: data.heroImage,
+    sourceUrl: data.sourceUrl,
     body: content
       .split(/\n\s*\n/)
       .map((paragraph) => paragraph.trim())
