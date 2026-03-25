@@ -42,7 +42,7 @@ export default async function Home() {
               <div className="overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#f7f4ee] p-2">
                 <iframe
                   src="https://subscribe-forms.beehiiv.com/bb32401e-c7a5-4631-bc05-ce32449ecf21"
-                  className="beehiiv-embed h-[420px] w-full bg-transparent sm:h-[360px]"
+                  className="beehiiv-embed h-[520px] w-full bg-transparent sm:h-[380px]"
                   data-test-id="beehiiv-embed"
                   frameBorder="0"
                   scrolling="no"

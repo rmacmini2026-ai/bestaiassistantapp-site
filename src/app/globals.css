@@ -39,11 +39,11 @@ h4 {
 }
 
 iframe.beehiiv-embed {
-  min-height: 360px;
+  min-height: 380px;
 }
 
 @media (max-width: 640px) {
   iframe.beehiiv-embed {
-    min-height: 420px;
+    min-height: 520px;
   }
 }
