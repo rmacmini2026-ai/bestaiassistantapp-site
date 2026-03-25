@@ -9,6 +9,32 @@ const topStories = getLatestArticles(3);
 const featuredStory = getFeaturedArticle();
 const latestArticles = getLatestArticles(6);
 const categories = Object.entries(categoryMeta);
+const videoCards = [
+  {
+    title: "How AI assistants are becoming the new operating layer",
+    meta: "Featured video · YouTube",
+    description:
+      "A flagship explainer slot for your strongest weekly video on assistants, agents, and AI workflow shifts.",
+  },
+  {
+    title: "AI agent breakdowns",
+    meta: "Series slot · YouTube",
+    description:
+      "Use this for shorter breakdowns on tools, launches, and operator strategies worth paying attention to.",
+  },
+  {
+    title: "Voice assistant updates",
+    meta: "Series slot · YouTube",
+    description:
+      "A dedicated home for multimodal voice, real-time assistants, and interface-layer product changes.",
+  },
+  {
+    title: "Automation and remote assistant workflows",
+    meta: "Series slot · YouTube",
+    description:
+      "Use this area for workflow demos, behind-the-scenes builds, and practical deployment videos.",
+  },
+];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -148,6 +174,66 @@ export default function Home() {
                 </p>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="border-t border-black/10 pt-10">
+          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl space-y-4">
+              <SectionLabel>Video</SectionLabel>
+              <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
+                A video layer for explainers, breakdowns, and weekly AI
+                assistant analysis.
+              </h2>
+              <p className="max-w-2xl text-base leading-7 text-zinc-700">
+                This placeholder section is ready for YouTube embeds. Once your
+                channel feed is wired in, this area can surface the latest
+                featured video plus supporting clips automatically.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.35fr_0.95fr]">
+            <div className="overflow-hidden rounded-[2.5rem] border border-black/10 bg-[#111111] p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] md:p-6">
+              <div className="aspect-video rounded-[1.75rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),rgba(255,255,255,0.03)_45%,rgba(255,255,255,0.01)_100%)] p-6">
+                <div className="flex h-full flex-col justify-between rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
+                  <div className="space-y-3">
+                    <SectionLabel>{videoCards[0].meta}</SectionLabel>
+                    <h3 className="max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-5xl">
+                      {videoCards[0].title}
+                    </h3>
+                    <p className="max-w-xl text-sm leading-6 text-zinc-300 md:text-base">
+                      {videoCards[0].description}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-zinc-300">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/10 text-lg">
+                      ▶
+                    </div>
+                    <span>YouTube featured video slot</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              {videoCards.slice(1).map((video) => (
+                <article
+                  key={video.title}
+                  className="rounded-[2rem] border border-black/10 bg-white/75 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.04)]"
+                >
+                  <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">
+                    {video.meta}
+                  </p>
+                  <h3 className="mt-3 font-serif text-2xl leading-tight tracking-tight text-zinc-950">
+                    {video.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-zinc-700 md:text-base">
+                    {video.description}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </section>
