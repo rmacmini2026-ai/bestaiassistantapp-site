@@ -29,9 +29,11 @@ export const metadata: Metadata = {
 const GA_ID = "G-YX5K6HX57V";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const year = new Date().getFullYear();
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#f5f2ea] text-zinc-950">
         <Script src="https://subscribe-forms.beehiiv.com/embed.js" strategy="afterInteractive" />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -43,7 +45,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             gtag('config', '${GA_ID}');
           `}
         </Script>
-        {children}
+        <div className="flex min-h-screen flex-col">
+          <div className="flex-1">{children}</div>
+          <footer className="border-t border-black/10 px-6 py-6 text-center text-sm text-zinc-500 md:px-10 lg:px-16">
+            © {year} Best AI Assistant App. All rights reserved.
+          </footer>
+        </div>
       </body>
     </html>
   );
