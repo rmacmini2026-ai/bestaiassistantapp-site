@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0C0C0D"/>
+  <rect x="60" y="60" width="1480" height="780" rx="36" fill="url(#bg)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="80" y="96" width="220" height="18" rx="9" fill="#D4AF37" opacity="0.9"/>
+  <text x="80" y="165" fill="#E7E5E4" font-size="24" font-family="Arial, Helvetica, sans-serif" letter-spacing="6">AI AUTOMATION</text>
+  <text x="80" y="290" fill="#F8F7F2" font-size="72" font-weight="700" font-family="Georgia, 'Times New Roman', serif"><tspan x="80" dy="0">Reddit takes on the bots</tspan><tspan x="80" dy="76">with new ‘human</tspan><tspan x="80" dy="76">verification’</tspan><tspan x="80" dy="76">requirements for fishy</tspan></text>
+  <text x="80" y="760" fill="#B3B0AA" font-size="28" font-family="Arial, Helvetica, sans-serif">Best AI Assistant App</text>
+  <circle cx="1360" cy="180" r="140" fill="#1F2937" opacity="0.55"/>
+  <circle cx="1260" cy="710" r="220" fill="#111827" opacity="0.7"/>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1520" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111214"/>
+      <stop offset="1" stop-color="#171819"/>
+    </linearGradient>
+  </defs>
+</svg>
