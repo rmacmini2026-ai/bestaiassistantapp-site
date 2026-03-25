@@ -4,7 +4,8 @@ import {
   getFeaturedArticle,
   getLatestArticles,
 } from "@/lib/content";
-import { getLatestYouTubeVideos, YOUTUBE_CHANNEL_URL } from "@/lib/youtube";
+import { getLatestYouTubeVideos } from "@/lib/youtube";
+import { VideoSection } from "@/components/video-section";
 
 export default async function Home() {
   const topStories = getLatestArticles(3);
@@ -12,8 +13,6 @@ export default async function Home() {
   const latestArticles = getLatestArticles(6);
   const categories = Object.entries(categoryMeta);
   const videos = await getLatestYouTubeVideos();
-  const featuredVideo = videos[0];
-  const supportingVideos = videos.slice(1, 4);
 
   return (
     <main className="min-h-screen bg-[#f5f2ea] text-zinc-950">
@@ -133,81 +132,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="border-t border-black/10 pt-10">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl space-y-4">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
-                Video
-              </div>
-              <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
-                Latest AI videos pulled from Nate Herk&apos;s YouTube channel.
-              </h2>
-              <p className="max-w-2xl text-base leading-7 text-zinc-700">
-                Watch the latest videos directly on the site, or jump straight to the full YouTube channel for more.
-              </p>
-            </div>
-            <a
-              href={YOUTUBE_CHANNEL_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-medium text-zinc-900 shadow-sm transition hover:bg-zinc-50"
-            >
-              Visit YouTube channel
-            </a>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[1.35fr_0.95fr]">
-            <div className="overflow-hidden rounded-[2.5rem] border border-black/10 bg-[#111111] p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] md:p-6">
-              <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/30">
-                <div className="aspect-video w-full overflow-hidden bg-black">
-                  <iframe
-                    src={featuredVideo?.embedUrl}
-                    title={featuredVideo?.title}
-                    className="h-full w-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="space-y-3 p-6">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-400">
-                    Featured video · {featuredVideo?.publishedText}
-                  </div>
-                  <h3 className="max-w-2xl font-serif text-3xl leading-tight tracking-tight md:text-5xl">
-                    {featuredVideo?.title}
-                  </h3>
-                  <p className="max-w-xl text-sm leading-6 text-zinc-300 md:text-base">
-                    {featuredVideo?.description}
-                  </p>
-                  <a
-                    href={featuredVideo?.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm text-white transition hover:bg-white/5"
-                  >
-                    Watch on YouTube
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-4">
-              {supportingVideos.map((video) => (
-                <a key={video.id} href={video.url} target="_blank" rel="noreferrer" className="rounded-[2rem] border border-black/10 bg-white/75 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.04)] transition hover:bg-white">
-                  <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">
-                    {video.publishedText} · YouTube
-                  </p>
-                  <h3 className="mt-3 font-serif text-2xl leading-tight tracking-tight text-zinc-950">
-                    {video.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-zinc-700 md:text-base">
-                    {video.description}
-                  </p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
+        <VideoSection videos={videos} />
       </section>
     </main>
   );
