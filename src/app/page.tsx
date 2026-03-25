@@ -6,6 +6,7 @@ import {
 } from "@/lib/content";
 import { getLatestYouTubeVideos } from "@/lib/youtube";
 import { VideoSection } from "@/components/video-section";
+import { SubscribeCard } from "@/components/subscribe-card";
 
 export default async function Home() {
   const topStories = getLatestArticles(3);
@@ -30,26 +31,7 @@ export default async function Home() {
                 A clean editorial publication covering the companies, products, workflows, and ideas shaping the future of AI assistants and AI-powered work.
               </p>
             </div>
-            <div className="w-full max-w-xl rounded-[2rem] border border-black/10 bg-white/70 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.05)] backdrop-blur">
-              <div className="mb-4 px-3 pt-2">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
-                  Subscribe
-                </div>
-                <p className="mt-3 text-sm leading-6 text-zinc-700 md:text-base">
-                  Get the latest AI assistant news delivered to your inbox every morning.
-                </p>
-              </div>
-              <div className="overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#f7f4ee] p-2">
-                <iframe
-                  src="https://subscribe-forms.beehiiv.com/bb32401e-c7a5-4631-bc05-ce32449ecf21"
-                  className="beehiiv-embed h-[520px] w-full bg-transparent sm:h-[380px]"
-                  data-test-id="beehiiv-embed"
-                  frameBorder="0"
-                  scrolling="no"
-                  title="Beehiiv subscribe form"
-                />
-              </div>
-            </div>
+            <SubscribeCard />
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
