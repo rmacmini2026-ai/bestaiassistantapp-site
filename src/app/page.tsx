@@ -4,7 +4,7 @@ import {
   getFeaturedArticle,
   getLatestArticles,
 } from "@/lib/content";
-import { getLatestYouTubeVideos } from "@/lib/youtube";
+import { getLatestYouTubeVideos, YOUTUBE_CHANNEL_URL } from "@/lib/youtube";
 
 export default async function Home() {
   const topStories = getLatestArticles(3);
@@ -143,15 +143,32 @@ export default async function Home() {
                 Latest AI videos pulled from Nate Herk&apos;s YouTube channel.
               </h2>
               <p className="max-w-2xl text-base leading-7 text-zinc-700">
-                A live video layer for explainers, breakdowns, and operator-focused commentary on AI assistants, agents, and automation.
+                Watch the latest videos directly on the site, or jump straight to the full YouTube channel for more.
               </p>
             </div>
+            <a
+              href={YOUTUBE_CHANNEL_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-medium text-zinc-900 shadow-sm transition hover:bg-zinc-50"
+            >
+              Visit YouTube channel
+            </a>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.35fr_0.95fr]">
-            <a href={featuredVideo?.url} target="_blank" rel="noreferrer" className="overflow-hidden rounded-[2.5rem] border border-black/10 bg-[#111111] p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] md:p-6">
+            <div className="overflow-hidden rounded-[2.5rem] border border-black/10 bg-[#111111] p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] md:p-6">
               <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/30">
-                <img src={featuredVideo?.thumbnail} alt={featuredVideo?.title} className="aspect-video w-full object-cover" />
+                <div className="aspect-video w-full overflow-hidden bg-black">
+                  <iframe
+                    src={featuredVideo?.embedUrl}
+                    title={featuredVideo?.title}
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
                 <div className="space-y-3 p-6">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-400">
                     Featured video · {featuredVideo?.publishedText}
@@ -162,9 +179,17 @@ export default async function Home() {
                   <p className="max-w-xl text-sm leading-6 text-zinc-300 md:text-base">
                     {featuredVideo?.description}
                   </p>
+                  <a
+                    href={featuredVideo?.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm text-white transition hover:bg-white/5"
+                  >
+                    Watch on YouTube
+                  </a>
                 </div>
               </div>
-            </a>
+            </div>
 
             <div className="grid gap-4">
               {supportingVideos.map((video) => (

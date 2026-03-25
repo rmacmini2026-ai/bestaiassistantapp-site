@@ -4,8 +4,11 @@ export type VideoCard = {
   description: string;
   publishedText: string;
   url: string;
+  embedUrl: string;
   thumbnail: string;
 };
+
+export const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@nateherk';
 
 const fallbackVideos: VideoCard[] = [
   {
@@ -14,7 +17,8 @@ const fallbackVideos: VideoCard[] = [
     description:
       'A featured slot for the latest breakdown on assistants, agents, and AI automation systems.',
     publishedText: 'Latest from YouTube',
-    url: 'https://www.youtube.com/@nateherk',
+    url: YOUTUBE_CHANNEL_URL,
+    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
   },
   {
@@ -23,7 +27,8 @@ const fallbackVideos: VideoCard[] = [
     description:
       'A supporting slot for practical AI workflow and automation content from the channel.',
     publishedText: 'Latest from YouTube',
-    url: 'https://www.youtube.com/@nateherk',
+    url: YOUTUBE_CHANNEL_URL,
+    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg',
   },
   {
@@ -32,7 +37,8 @@ const fallbackVideos: VideoCard[] = [
     description:
       'A card for product breakdowns, AI business angles, and execution-first commentary.',
     publishedText: 'Latest from YouTube',
-    url: 'https://www.youtube.com/@nateherk',
+    url: YOUTUBE_CHANNEL_URL,
+    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg',
   },
   {
@@ -41,7 +47,8 @@ const fallbackVideos: VideoCard[] = [
     description:
       'A card for videos on systems, delegation, and practical implementation.',
     publishedText: 'Latest from YouTube',
-    url: 'https://www.youtube.com/@nateherk',
+    url: YOUTUBE_CHANNEL_URL,
+    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg',
   },
 ];
@@ -58,9 +65,15 @@ export async function getLatestYouTubeVideos(): Promise<VideoCard[]> {
       .map((video: any) => ({
         id: String(video.id ?? ''),
         title: String(video.title?.text ?? video.title ?? 'Untitled video'),
-        description: String(video.description_snippet?.text ?? 'Latest video from Nate Herk on AI automation and assistants.'),
-        publishedText: String(video.published?.text ?? video.published ?? 'Latest from YouTube'),
+        description: String(
+          video.description_snippet?.text ??
+            'Latest video from Nate Herk on AI automation and assistants.'
+        ),
+        publishedText: String(
+          video.published?.text ?? video.published ?? 'Latest from YouTube'
+        ),
         url: `https://www.youtube.com/watch?v=${video.id}`,
+        embedUrl: `https://www.youtube.com/embed/${video.id}`,
         thumbnail: String(video.thumbnails?.[video.thumbnails.length - 1]?.url ?? ''),
       }))
       .filter((video: VideoCard) => video.id && video.url);
