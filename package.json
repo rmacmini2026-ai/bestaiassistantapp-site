@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "publish:daily": "node scripts/publish-daily-news.mjs"
+    "publish:daily": "node scripts/publish-daily-news.mjs",
+    "publish:live": "bash scripts/publish-live.sh"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
