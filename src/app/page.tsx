@@ -89,13 +89,13 @@ export default async function Home() {
         <section className="grid gap-8 border-t border-black/10 pt-10 lg:grid-cols-[0.95fr_1.45fr]">
           <div className="space-y-4">
             <div className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
-              Publishing engine
+              Daily briefing
             </div>
             <h2 className="font-serif text-3xl leading-tight tracking-tight md:text-5xl">
-              Built to publish fresh AI assistant coverage every morning at 5:00 AM PST.
+              Daily AI assistant news, filtered for what actually matters.
             </h2>
             <p className="max-w-xl text-base leading-7 text-zinc-700">
-              The site is structured for an automated pipeline: collect stories, rank the most relevant topics, generate summary-plus-opinion articles, and publish them daily to the homepage and category feeds.
+              Every morning, the site refreshes with the most relevant stories in AI assistants, agents, voice, automation, and assistant apps — filtered for signal, not noise.
             </p>
           </div>
 
